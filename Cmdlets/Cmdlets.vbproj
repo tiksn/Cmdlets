@@ -73,6 +73,7 @@
     <Compile Include="CultureAndRegionInfoCommandBase.vb" />
     <Compile Include="CurrencyRegion.vb" />
     <Compile Include="CurrencyRegions.vb" />
+    <Compile Include="ExportCultureAndRegionInfoCommand.vb" />
     <Compile Include="GetChildCultureInfoCommand.vb" />
     <Compile Include="GetCultureAndRegionInfoCommand.vb" />
     <Compile Include="GetCultureInfoBranchCommand.vb" />
