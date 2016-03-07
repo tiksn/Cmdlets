@@ -1,14 +1,12 @@
 ﻿Imports System.Globalization
 Imports System.Management.Automation
 
-Public Class RegisterOrSaveCultureAndRegionInfoCommandBase
-	Inherits Cmdlet
+<Cmdlet("Set", "CultureAndRegionInfo")>
+Public Class SetCultureAndRegionInfoCommand
+	Inherits CultureAndRegionInfoCommandBase
 
 	<Parameter(Mandatory:=True)>
 	Public Property Name() As String
-
-	<Parameter(Mandatory:=True)>
-	Public Property CultureAndRegionModifier() As CultureAndRegionModifiers
 
 	<Parameter()>
 	Public Property SourceCultureInfo() As CultureInfo
@@ -16,8 +14,8 @@ Public Class RegisterOrSaveCultureAndRegionInfoCommandBase
 	<Parameter()>
 	Public Property SourceRegionInfo() As RegionInfo
 
-	Protected Function CreateBuilder() As CultureAndRegionInfoBuilder
-		Dim builder As New CultureAndRegionInfoBuilder(Name, CultureAndRegionModifier)
+	Protected Overrides Sub BeginProcessing()
+		Dim builder As CultureAndRegionInfoBuilder = CultureAndRegionInfoDictionary(Name)
 
 		If SourceCultureInfo IsNot Nothing Then
 			builder.LoadDataFromCultureInfo(SourceCultureInfo)
@@ -26,7 +24,5 @@ Public Class RegisterOrSaveCultureAndRegionInfoCommandBase
 		If SourceRegionInfo IsNot Nothing Then
 			builder.LoadDataFromRegionInfo(SourceRegionInfo)
 		End If
-
-		Return builder
-	End Function
+	End Sub
 End Class

@@ -2,6 +2,6 @@
 
 <Cmdlet("Register", "CultureAndRegionInfo")>
 Public Class RegisterCultureAndRegionInfoCommand
-	Inherits RegisterOrSaveCultureAndRegionInfoCommandBase
+	Inherits CultureAndRegionInfoCommandBase
 
 End Class
