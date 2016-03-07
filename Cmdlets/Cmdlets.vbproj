@@ -48,6 +48,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="sysglobl" />
     <Reference Include="System" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegisterCultureAndRegionInfoCommand.vb" />
+    <Compile Include="RegisterOrSaveCultureAndRegionInfoCommandBase.vb" />
     <Compile Include="ThreeLetterWindowsLanguageName.vb" />
     <Compile Include="UnregisterCultureAndRegionInfoCommand.vb" />
   </ItemGroup>
