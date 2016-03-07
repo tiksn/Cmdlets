@@ -101,9 +101,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegisterCultureAndRegionInfoCommand.vb" />
-    <Compile Include="RegisterOrSaveCultureAndRegionInfoCommandBase.vb" />
     <Compile Include="RemoveCultureAndRegionInfoCommand.vb" />
-    <Compile Include="SaveCultureAndRegionInfoCommand.vb" />
+    <Compile Include="SetCultureAndRegionInfoCommand.vb" />
     <Compile Include="ThreeLetterWindowsLanguageName.vb" />
     <Compile Include="UnregisterCultureAndRegionInfoCommand.vb" />
   </ItemGroup>
