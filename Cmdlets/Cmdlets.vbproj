@@ -69,9 +69,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCultureAndRegionInfoCommand.vb" />
+    <Compile Include="CultureAndRegionInfoCommandBase.vb" />
     <Compile Include="CurrencyRegion.vb" />
     <Compile Include="CurrencyRegions.vb" />
     <Compile Include="GetChildCultureInfoCommand.vb" />
+    <Compile Include="GetCultureAndRegionInfoCommand.vb" />
     <Compile Include="GetCultureInfoBranchCommand.vb" />
     <Compile Include="GetCultureInfoCommand.vb" />
     <Compile Include="GetCurrencyInfoCommand.vb" />
@@ -97,6 +100,8 @@
     </Compile>
     <Compile Include="RegisterCultureAndRegionInfoCommand.vb" />
     <Compile Include="RegisterOrSaveCultureAndRegionInfoCommandBase.vb" />
+    <Compile Include="RemoveCultureAndRegionInfoCommand.vb" />
+    <Compile Include="SaveCultureAndRegionInfoCommand.vb" />
     <Compile Include="ThreeLetterWindowsLanguageName.vb" />
     <Compile Include="UnregisterCultureAndRegionInfoCommand.vb" />
   </ItemGroup>
