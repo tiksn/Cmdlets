@@ -5,6 +5,17 @@ Imports System.Management.Automation
 Public Class SetCultureAndRegionInfoCommand
 	Inherits CultureAndRegionInfoCommandBase
 
+	Sub New()
+		Dim builder As CultureAndRegionInfoBuilder = CultureAndRegionInfoDictionary(Name)
+
+		'builder.AvailableCalendars
+		'builder.CompareInfo
+		'builder.ConsoleFallbackUICulture
+		'builder.IetfLanguageTag
+		'builder.NumberFormat
+		'builder.TextInfo
+	End Sub
+
 	<Parameter(Mandatory:=True)>
 	Public Property Name() As String
 
@@ -35,6 +46,38 @@ Public Class SetCultureAndRegionInfoCommand
 	<Parameter()>
 	Public Property RegionNativeName() As String
 
+	<Parameter()>
+	Public Property ISOCurrencySymbol() As String
+
+	<Parameter()>
+	Public Property GeoId As Integer?
+
+	<Parameter()>
+	Public Property IsMetric As Boolean?
+
+	<Parameter()>
+	Public Property IsRightToLeft As Boolean?
+
+	<Parameter()>
+	Public Property KeyboardLayoutId As Integer?
+
+	<Parameter()>
+	Public Property ThreeLetterISOLanguageName As String
+
+	<Parameter()>
+	Public Property ThreeLetterISORegionName As String
+
+	<Parameter()>
+	Public Property ThreeLetterWindowsLanguageName As String
+
+	<Parameter()>
+	Public Property ThreeLetterWindowsRegionName As String
+
+	<Parameter()>
+	Public Property TwoLetterISOLanguageName As String
+
+	<Parameter()>
+	Public Property TwoLetterISORegionName As String
 
 	Protected Overrides Sub BeginProcessing()
 		Dim builder As CultureAndRegionInfoBuilder = CultureAndRegionInfoDictionary(Name)
@@ -71,5 +114,48 @@ Public Class SetCultureAndRegionInfoCommand
 			builder.RegionNativeName = RegionNativeName
 		End If
 
+		If ISOCurrencySymbol IsNot Nothing Then
+			builder.ISOCurrencySymbol = ISOCurrencySymbol
+		End If
+
+		If GeoId.HasValue Then
+			builder.GeoId = GeoId.Value
+		End If
+
+		If IsMetric.HasValue Then
+			builder.IsMetric = IsMetric.Value
+		End If
+
+		If IsRightToLeft.HasValue Then
+			builder.IsRightToLeft = IsRightToLeft.Value
+		End If
+
+		If KeyboardLayoutId.HasValue Then
+			builder.KeyboardLayoutId = KeyboardLayoutId.Value
+		End If
+
+		If ThreeLetterISOLanguageName IsNot Nothing Then
+			builder.ThreeLetterISOLanguageName = ThreeLetterISOLanguageName
+		End If
+
+		If ThreeLetterISORegionName IsNot Nothing Then
+			builder.ThreeLetterISORegionName = ThreeLetterISORegionName
+		End If
+
+		If ThreeLetterWindowsLanguageName IsNot Nothing Then
+			builder.ThreeLetterWindowsLanguageName = ThreeLetterWindowsLanguageName
+		End If
+
+		If ThreeLetterWindowsRegionName IsNot Nothing Then
+			builder.ThreeLetterWindowsRegionName = ThreeLetterWindowsRegionName
+		End If
+
+		If TwoLetterISOLanguageName IsNot Nothing Then
+			builder.TwoLetterISOLanguageName = TwoLetterISOLanguageName
+		End If
+
+		If TwoLetterISORegionName IsNot Nothing Then
+			builder.TwoLetterISORegionName = TwoLetterISORegionName
+		End If
 	End Sub
 End Class
