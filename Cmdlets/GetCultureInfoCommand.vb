@@ -6,7 +6,7 @@ Public Class GetCultureInfoCommand
 	Inherits Cmdlet
 
 	<Parameter()>
-	Public Property CultureName() As String
+	Public Property Name() As String
 
 	<Parameter()>
 	Public Property All() As SwitchParameter
@@ -19,9 +19,9 @@ Public Class GetCultureInfoCommand
 		If Me.All.IsPresent Then
 
 			Me.WriteObject(CultureInfo.GetCultures(Me.CultureTypes), True)
-		ElseIf Me.CultureName IsNot Nothing Then
+		ElseIf Me.Name IsNot Nothing Then
 
-			Me.WriteObject(New CultureInfo(Me.CultureName))
+			Me.WriteObject(New CultureInfo(Me.Name))
 		Else
 
 			Dim CurrentCultures As New System.Collections.Generic.Dictionary(Of String, CultureInfo)

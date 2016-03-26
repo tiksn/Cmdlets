@@ -6,8 +6,6 @@ Public Class SetCultureAndRegionInfoCommand
 	Inherits CultureAndRegionInfoCommandBase
 
 	Sub New()
-		Dim builder As CultureAndRegionInfoBuilder = CultureAndRegionInfoDictionary(Name)
-
 		'builder.AvailableCalendars
 		'builder.CompareInfo
 		'builder.ConsoleFallbackUICulture
