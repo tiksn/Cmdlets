@@ -48,6 +48,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="sysglobl" />
     <Reference Include="System" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -68,9 +69,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCultureAndRegionInfoCommand.vb" />
+    <Compile Include="CultureAndRegionInfoCommandBase.vb" />
     <Compile Include="CurrencyRegion.vb" />
     <Compile Include="CurrencyRegions.vb" />
+    <Compile Include="ExportCultureAndRegionInfoCommand.vb" />
     <Compile Include="GetChildCultureInfoCommand.vb" />
+    <Compile Include="GetCultureAndRegionInfoCommand.vb" />
     <Compile Include="GetCultureInfoBranchCommand.vb" />
     <Compile Include="GetCultureInfoCommand.vb" />
     <Compile Include="GetCurrencyInfoCommand.vb" />
@@ -79,6 +84,7 @@
     <Compile Include="GetRegionInfoCommand.vb" />
     <Compile Include="GetSpecificCultureInfoCommand.vb" />
     <Compile Include="GetThreeLetterWindowsLanguageNameCommand.vb" />
+    <Compile Include="ImportCultureAndRegionInfoCommand.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -94,7 +100,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RegisterCultureAndRegionInfoCommand.vb" />
+    <Compile Include="RemoveCultureAndRegionInfoCommand.vb" />
+    <Compile Include="SetCultureAndRegionInfoCommand.vb" />
     <Compile Include="ThreeLetterWindowsLanguageName.vb" />
+    <Compile Include="UnregisterCultureAndRegionInfoCommand.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

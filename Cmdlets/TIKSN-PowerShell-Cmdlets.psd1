@@ -13,7 +13,7 @@
 RootModule = 'TIKSN PowerShell Cmdlets.dll'
 
 # Version number of this module.
-ModuleVersion = '1.0.0.0'
+ModuleVersion = '1.1.1.0'
 
 # ID used to uniquely identify this module
 GUID = '852b7459-fcef-4c8d-96dd-049c344b88ad'

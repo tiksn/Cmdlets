@@ -1,29 +1,35 @@
-﻿<System.Management.Automation.Cmdlet("Get", "CultureInfo")> _
+﻿Imports System.Globalization
+Imports System.Management.Automation
+
+<Cmdlet("Get", "CultureInfo")>
 Public Class GetCultureInfoCommand
-    Inherits System.Management.Automation.Cmdlet
+	Inherits Cmdlet
 
-    <System.Management.Automation.Parameter()> _
-    Public Property CultureName() As String
+	<Parameter()>
+	Public Property Name() As String
 
-    <System.Management.Automation.Parameter()> _
-    Public Property All() As System.Management.Automation.SwitchParameter
+	<Parameter()>
+	Public Property All() As SwitchParameter
 
-    Protected Overrides Sub BeginProcessing()
+	<Parameter()>
+	Public Property CultureTypes() As CultureTypes = CultureTypes.AllCultures
 
-        If Me.All.IsPresent Then
+	Protected Overrides Sub BeginProcessing()
 
-            Me.WriteObject(System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures), True)
-        ElseIf Me.CultureName IsNot Nothing Then
+		If Me.All.IsPresent Then
 
-            Me.WriteObject(New System.Globalization.CultureInfo(Me.CultureName))
-        Else
+			Me.WriteObject(CultureInfo.GetCultures(Me.CultureTypes), True)
+		ElseIf Me.Name IsNot Nothing Then
 
-            Dim CurrentCultures As New System.Collections.Generic.Dictionary(Of String, System.Globalization.CultureInfo)
+			Me.WriteObject(New CultureInfo(Me.Name))
+		Else
 
-            CurrentCultures.Add("CurrentCulture", System.Globalization.CultureInfo.CurrentCulture)
-            CurrentCultures.Add("CurrentUICulture", System.Globalization.CultureInfo.CurrentUICulture)
+			Dim CurrentCultures As New System.Collections.Generic.Dictionary(Of String, CultureInfo)
 
-            Me.WriteObject(CurrentCultures, True)
-        End If
-    End Sub
+			CurrentCultures.Add("CurrentCulture", CultureInfo.CurrentCulture)
+			CurrentCultures.Add("CurrentUICulture", CultureInfo.CurrentUICulture)
+
+			Me.WriteObject(CurrentCultures, True)
+		End If
+	End Sub
 End Class
