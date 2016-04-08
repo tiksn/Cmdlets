@@ -58,14 +58,21 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TIKSN.Finance">
-      <HintPath>..\packages\TIKSN-Framework.1.2.0.0\lib\portable-net45+sl5+wp8+win8\TIKSN.Finance.dll</HintPath>
+    <Reference Include="TIKSN.Core, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TIKSN-Framework.1.3.0.0-rc13\lib\portable-Net46+UAP10+.NETPlatform50\TIKSN.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="TIKSN.Versioning">
-      <HintPath>..\packages\TIKSN-Framework.1.2.0.0\lib\portable-net45+sl5+wp8+win8\TIKSN.Versioning.dll</HintPath>
+    <Reference Include="TIKSN.Finance, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TIKSN-Framework.1.3.0.0-rc13\lib\portable-Net46+UAP10+.NETPlatform50\TIKSN.Finance.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="TIKSN.Web">
-      <HintPath>..\packages\TIKSN-Framework.1.2.0.0\lib\portable-net45+sl5+wp8+win8\TIKSN.Web.dll</HintPath>
+    <Reference Include="TIKSN.Versioning, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TIKSN-Framework.1.3.0.0-rc13\lib\portable-Net46+UAP10+.NETPlatform50\TIKSN.Versioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TIKSN.Web, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TIKSN-Framework.1.3.0.0-rc13\lib\portable-Net46+UAP10+.NETPlatform50\TIKSN.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,12 +86,19 @@
     <Compile Include="GetCultureInfoBranchCommand.vb" />
     <Compile Include="GetCultureInfoCommand.vb" />
     <Compile Include="GetCurrencyInfoCommand.vb" />
+    <Compile Include="GetExchangeRateCommand.vb" />
     <Compile Include="GetPseudoCultureInfoCommand.vb" />
     <Compile Include="GetPseudoRegionInfoCommand.vb" />
     <Compile Include="GetRegionInfoCommand.vb" />
     <Compile Include="GetSpecificCultureInfoCommand.vb" />
     <Compile Include="GetThreeLetterWindowsLanguageNameCommand.vb" />
+    <Compile Include="Helpers\ExchangeHelper.vb" />
+    <Compile Include="Helpers\LookopHelper.vb" />
+    <Compile Include="Helpers\RegionHelper.vb" />
     <Compile Include="ImportCultureAndRegionInfoCommand.vb" />
+    <Compile Include="Models\BankExchange.vb" />
+    <Compile Include="Models\BankExchangeRate.vb" />
+    <Compile Include="Models\LookupCounterItem.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -124,7 +138,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="TIKSN-PowerShell-Cmdlets.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -132,6 +148,7 @@
   <ItemGroup>
     <Import Include="System.Linq" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

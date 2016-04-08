@@ -1,116 +1,119 @@
-﻿<System.Management.Automation.Cmdlet("Get", "CurrencyInfo")> _
+﻿Imports System.Collections.Generic
+Imports System.Management.Automation
+
+<Cmdlet("Get", "CurrencyInfo")>
 Public Class GetCurrencyInfoCommand
-    Inherits System.Management.Automation.Cmdlet
+	Inherits Cmdlet
 
-    <System.Management.Automation.Parameter> _
-    Public Property CurrencyRegions() As System.Management.Automation.SwitchParameter
+	<Parameter>
+	Public Property CurrencyRegions() As SwitchParameter
 
-    <System.Management.Automation.Parameter> _
-    Public Property ISOCurrencySymbol() As String
+	<Parameter>
+	Public Property ISOCurrencySymbol() As String
 
-    Protected Overrides Sub BeginProcessing()
+	Protected Overrides Sub BeginProcessing()
 
-        Dim ISOCodeSpecified As Boolean = Not String.IsNullOrEmpty(Me.ISOCurrencySymbol)
+		Dim ISOCodeSpecified As Boolean = Not String.IsNullOrEmpty(Me.ISOCurrencySymbol)
 
-        If Me.CurrencyRegions.IsPresent Then
+		If Me.CurrencyRegions.IsPresent Then
 
-            If ISOCodeSpecified Then
+			If ISOCodeSpecified Then
 
-                Dim RegionalCurrencies = Me.GetSpecificCurrencyRegions(Me.ISOCurrencySymbol)
+				Dim RegionalCurrencies = Me.GetSpecificCurrencyRegions(Me.ISOCurrencySymbol)
 
-                Me.WriteObject(RegionalCurrencies, True)
-            Else
+				Me.WriteObject(RegionalCurrencies, True)
+			Else
 
-                Dim RegionalCurrencies = Me.GetAllCurrencyRegions()
+				Dim RegionalCurrencies = Me.GetAllCurrencyRegions()
 
-                Me.WriteObject(RegionalCurrencies, True)
-            End If
-        Else
+				Me.WriteObject(RegionalCurrencies, True)
+			End If
+		Else
 
-            If ISOCodeSpecified Then
+			If ISOCodeSpecified Then
 
-                Dim Currencies = Me.GetSpecificCurrency(Me.ISOCurrencySymbol)
+				Dim Currencies = Me.GetSpecificCurrency(Me.ISOCurrencySymbol)
 
-                Me.WriteObject(Currencies, True)
-            Else
+				Me.WriteObject(Currencies, True)
+			Else
 
-                Dim Currencies = Me.GetAllCurrencies()
+				Dim Currencies = Me.GetAllCurrencies()
 
-                Me.WriteObject(Currencies, True)
-            End If
-        End If
+				Me.WriteObject(Currencies, True)
+			End If
+		End If
 
-    End Sub
+	End Sub
 
-    Private Function GetAllCurrencyRegions() As System.Collections.Generic.List(Of CurrencyRegions)
-        Dim Regions = GetRegionInfoCommand.GetAllRegions()
+	Private Function GetAllCurrencyRegions() As List(Of CurrencyRegions)
+		Dim Regions = GetAllRegions()
 
-        Dim RegionalCurrencies = New System.Collections.Generic.List(Of CurrencyRegions)
+		Dim RegionalCurrencies = New List(Of CurrencyRegions)
 
-        For Each Region In Regions
+		For Each Region In Regions
 
-            Dim Currency = New TIKSN.Finance.CurrencyInfo(Region)
+			Dim Currency = New TIKSN.Finance.CurrencyInfo(Region)
 
-            If RegionalCurrencies.Any(Function(RC) RC.Currency = Currency) Then
+			If RegionalCurrencies.Any(Function(RC) RC.Currency = Currency) Then
 
-                Dim RegionalCurrency = RegionalCurrencies.Single(Function(RC) RC.Currency = Currency)
+				Dim RegionalCurrency = RegionalCurrencies.Single(Function(RC) RC.Currency = Currency)
 
-                RegionalCurrency.Regions.Add(Region)
-            Else
-                Dim RegionalCurrency = New CurrencyRegions
+				RegionalCurrency.Regions.Add(Region)
+			Else
+				Dim RegionalCurrency = New CurrencyRegions
 
-                RegionalCurrency.Currency = Currency
-                RegionalCurrency.Regions.Add(Region)
+				RegionalCurrency.Currency = Currency
+				RegionalCurrency.Regions.Add(Region)
 
-                RegionalCurrencies.Add(RegionalCurrency)
-            End If
-        Next
+				RegionalCurrencies.Add(RegionalCurrency)
+			End If
+		Next
 
-        Return RegionalCurrencies
-    End Function
+		Return RegionalCurrencies
+	End Function
 
-    Private Function GetSpecificCurrencyRegions(ISOCode As String) As System.Collections.Generic.List(Of CurrencyRegion)
+	Private Function GetSpecificCurrencyRegions(ISOCode As String) As System.Collections.Generic.List(Of CurrencyRegion)
 
-        Dim Regions = GetRegionInfoCommand.GetAllRegions()
+		Dim Regions = GetAllRegions()
 
-        Dim Result = New System.Collections.Generic.List(Of CurrencyRegion)
+		Dim Result = New System.Collections.Generic.List(Of CurrencyRegion)
 
-        For Each Region In Regions
+		For Each Region In Regions
 
-            If String.Compare(Region.ISOCurrencySymbol, ISOCode, System.StringComparison.InvariantCultureIgnoreCase) = 0 Then
+			If String.Compare(Region.ISOCurrencySymbol, ISOCode, System.StringComparison.InvariantCultureIgnoreCase) = 0 Then
 
-                Result.Add(New CurrencyRegion(Region))
-            End If
-        Next
+				Result.Add(New CurrencyRegion(Region))
+			End If
+		Next
 
-        Return Result
-    End Function
+		Return Result
+	End Function
 
-    Private Function GetAllCurrencies() As System.Collections.Generic.HashSet(Of TIKSN.Finance.CurrencyInfo)
-        Dim Regions = GetRegionInfoCommand.GetAllRegions()
+	Private Function GetAllCurrencies() As HashSet(Of Finance.CurrencyInfo)
+		Dim Regions = GetAllRegions()
 
-        Dim Currencies As New System.Collections.Generic.HashSet(Of TIKSN.Finance.CurrencyInfo)
+		Dim Currencies As New HashSet(Of Finance.CurrencyInfo)
 
-        For Each Region In Regions
-            Currencies.Add(New TIKSN.Finance.CurrencyInfo(Region))
-        Next
+		For Each Region In Regions
+			Currencies.Add(New TIKSN.Finance.CurrencyInfo(Region))
+		Next
 
-        Return Currencies
-    End Function
+		Return Currencies
+	End Function
 
-    Private Function GetSpecificCurrency(ISOCode As String) As System.Collections.Generic.IEnumerable(Of TIKSN.Finance.CurrencyInfo)
-        Dim Regions = GetRegionInfoCommand.GetAllRegions()
+	Private Function GetSpecificCurrency(ISOCode As String) As System.Collections.Generic.IEnumerable(Of TIKSN.Finance.CurrencyInfo)
+		Dim Regions = GetAllRegions()
 
-        Dim Currencies As New System.Collections.Generic.List(Of TIKSN.Finance.CurrencyInfo)
+		Dim Currencies As New List(Of Finance.CurrencyInfo)
 
-        For Each Region In Regions
+		For Each Region In Regions
 
-            If String.Compare(Region.ISOCurrencySymbol, ISOCode, System.StringComparison.InvariantCultureIgnoreCase) = 0 Then
+			If String.Compare(Region.ISOCurrencySymbol, ISOCode, System.StringComparison.InvariantCultureIgnoreCase) = 0 Then
 
-                Currencies.Add(New TIKSN.Finance.CurrencyInfo(Region))
-            End If
-        Next
+				Currencies.Add(New TIKSN.Finance.CurrencyInfo(Region))
+			End If
+		Next
 
-        Return Currencies
-    End Function
+		Return Currencies
+	End Function
 End Class
