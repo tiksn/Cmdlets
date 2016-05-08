@@ -13,8 +13,13 @@ Public Class GetExchangeRateCommand
 	<Parameter(Mandatory:=True)>
 	Public Property CounterCurrency As String
 
+	<Parameter(Mandatory:=False)>
+	Public Property AsOn As DateTimeOffset?
+
 	Protected Overrides Sub BeginProcessing()
 		Dim banks = GetSupportedBanks()
+		Dim exchangeDate = If(AsOn.HasValue, AsOn.Value, DateTimeOffset.Now)
+
 		Dim result As New List(Of BankExchangeRate)
 
 		Dim pair As New CurrencyPair(New CurrencyInfo(BaseCurrency), New CurrencyInfo(CounterCurrency))
@@ -27,14 +32,17 @@ Public Class GetExchangeRateCommand
 
 			WriteVerbose(String.Format("Retrieving supported currencies from {0}", bank.BankName))
 
-			Dim pairs = bank.Exchange.GetCurrencyPairsAsync(DateTimeOffset.Now).Result
+			Try
+				Dim pairs = bank.Exchange.GetCurrencyPairsAsync(exchangeDate).Result
 
-			If pairs.Any(Function(item) item.Equals(pair)) Then
-				WriteVerbose(String.Format("Retrieving {1} exchange rate from {0}", bank.BankName, pair))
-				Dim rate = bank.Exchange.GetExchangeRateAsync(pair, DateTimeOffset.Now).Result
-
-				result.Add(New BankExchangeRate(bank.BankName, pair, rate))
-			End If
+				If pairs.Any(Function(item) item.Equals(pair)) Then
+					WriteVerbose(String.Format("Retrieving {1} exchange rate from {0}", bank.BankName, pair))
+					Dim rate = bank.Exchange.GetExchangeRateAsync(pair, exchangeDate).Result
+					result.Add(New BankExchangeRate(bank.BankName, pair, rate))
+				End If
+			Catch ex As Exception
+				WriteError(New ErrorRecord(ex, "", ErrorCategory.InvalidResult, Nothing))
+			End Try
 		Next
 
 		WriteObject(result, True)

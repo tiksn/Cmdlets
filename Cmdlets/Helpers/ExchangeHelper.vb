@@ -15,6 +15,7 @@ Module ExchangeHelper
 		banks.Add(New BankExchange("The Central Bank of the Republic of Armenia", New CentralBankOfArmenia))
 		banks.Add(New BankExchange("European Central Bank", New EuropeanCentralBank))
 		banks.Add(New BankExchange("Federal Reserve System", New FederalReserveSystem))
+		banks.Add(New BankExchange("National Bank of Ukraine", New NationalBankOfUkraine))
 		banks.Add(New BankExchange("Reserve Bank of Australia", New ReserveBankOfAustralia))
 		banks.Add(New BankExchange("Swiss National Bank", New SwissNationalBank))
 
