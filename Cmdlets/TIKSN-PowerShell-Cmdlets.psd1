@@ -13,7 +13,7 @@
 RootModule = 'TIKSN PowerShell Cmdlets.dll'
 
 # Version number of this module.
-ModuleVersion = '1.1.1.0'
+ModuleVersion = '1.2.0.0'
 
 # ID used to uniquely identify this module
 GUID = '852b7459-fcef-4c8d-96dd-049c344b88ad'
@@ -52,7 +52,7 @@ Description = 'TIKSN PowerShell Cmdlets is a PowerShell binary module which prov
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @( 
+RequiredAssemblies = @(
 	'TIKSN PowerShell Cmdlets.dll',
 	'TIKSN.Finance.dll',
 	'TIKSN.Versioning.dll',
