@@ -1,47 +1,87 @@
-using GitTools.Git;
+using LibGit2Sharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 
 namespace TIKSN.Cmdlets.GitCmdlets
 {
-    public class GitDirectoryScanner
+    internal class GitDirectoryScanner
     {
-        private readonly Cmdlet cmdlet;
+        private readonly PSCmdlet cmdlet;
         private readonly bool recurse;
-
-        public GitDirectoryScanner(Cmdlet cmdlet, bool recurse)
+        private readonly IVisitCommand visitCommand;
+        public GitDirectoryScanner(PSCmdlet cmdlet, IVisitCommand visitCommand, bool recurse)
         {
             this.cmdlet = cmdlet;
+            this.visitCommand = visitCommand;
             this.recurse = recurse;
         }
 
         public void Scan()
         {
-            cmdlet.WriteObject(GitDirFinder.TreeWalkForDotGitDir("."));
-            return;
-            var result = new List<int>();
+            var result = new List<VisitResult>();
 
-            VisitDirectory(".");
-            ScanDirectories(".");
+            var visitResult = VisitDirectory(cmdlet.SessionState.Path.CurrentFileSystemLocation.Path);
+            if (visitResult != null)
+                result.Add(visitResult);
+
+            var scanResult = ScanDirectories(cmdlet.SessionState.Path.CurrentFileSystemLocation.Path);
+            result.AddRange(scanResult);
 
             if(result.Count == 0)
             {
                 cmdlet.WriteWarning("No Git repository is found.");
             }
 
-
             cmdlet.WriteObject(result, true);
         }
 
-        private void ScanDirectories(string folder)
+        private IEnumerable<VisitResult> ScanDirectories(string folder)
         {
-            throw new NotImplementedException();
+            var result = new List<VisitResult>();
+
+            foreach (var subfolder in Directory.GetDirectories(folder))
+            {
+                var subfolderVisitResult = VisitDirectory(subfolder);
+
+                if(subfolderVisitResult == null)
+                {
+                    if(recurse)
+                    {
+                        var subfolderResult = ScanDirectories(subfolder);
+
+                        result.AddRange(subfolderResult);
+                    }
+                }
+                else
+                {
+                    result.Add(subfolderVisitResult);
+                }
+            }
+
+            return result;
         }
 
-        private void VisitDirectory(string folder)
+        private VisitResult VisitDirectory(string folder)
         {
-            throw new NotImplementedException();
+            if(Repository.IsValid(folder))
+            {
+                cmdlet.WriteVerbose($"Git repository is found under folder: {folder}");
+
+                var repository = new Repository(folder);
+
+                try
+                {
+                    return visitCommand.Execute(repository);
+                }
+                catch (Exception ex)
+                {
+                    cmdlet.WriteError(new ErrorRecord(ex, "", ErrorCategory.InvalidOperation, repository));
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -13,7 +13,7 @@
 RootModule = 'TIKSN PowerShell Cmdlets.dll'
 
 # Version number of this module.
-ModuleVersion = '1.2.0.0'
+ModuleVersion = '1.2.1.0'
 
 # ID used to uniquely identify this module
 GUID = '852b7459-fcef-4c8d-96dd-049c344b88ad'
@@ -52,11 +52,11 @@ Description = 'TIKSN PowerShell Cmdlets is a PowerShell binary module which prov
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @(
-	'TIKSN PowerShell Cmdlets.dll',
-	'TIKSN.Finance.dll',
-	'TIKSN.Versioning.dll',
-	'TIKSN.Web.dll')
+#RequiredAssemblies = @(
+#	'TIKSN PowerShell Cmdlets.dll',
+#	'TIKSN.Finance.dll',
+#	'TIKSN.Versioning.dll',
+#	'TIKSN.Web.dll')
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
