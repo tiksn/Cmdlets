@@ -274,6 +274,7 @@
     <Compile Include="GetThreeLetterWindowsLanguageNameCommand.cs" />
     <Compile Include="GitCmdlets\FetchVisitCommand.cs" />
     <Compile Include="GitCmdlets\GetGitRepositoryCommand.cs" />
+    <Compile Include="GitCmdlets\GetGitVersionTagTableCommand.cs" />
     <Compile Include="GitCmdlets\GitDirectoryScanner.cs" />
     <Compile Include="GitCmdlets\IVisitCommand.cs" />
     <Compile Include="GitCmdlets\PullVisitCommand.cs" />
