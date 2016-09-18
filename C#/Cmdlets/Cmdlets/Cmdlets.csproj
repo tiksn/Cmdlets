@@ -277,6 +277,7 @@
     <Compile Include="GitCmdlets\GitDirectoryScanner.cs" />
     <Compile Include="GitCmdlets\IVisitCommand.cs" />
     <Compile Include="GitCmdlets\PullVisitCommand.cs" />
+    <Compile Include="GitCmdlets\SetVisualStudioGitVersionTagCommand.cs" />
     <Compile Include="GitCmdlets\UpdateGitRepositoryCommand.cs" />
     <Compile Include="GitCmdlets\VisitOutcome.cs" />
     <Compile Include="GitCmdlets\VisitResult.cs" />
