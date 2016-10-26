@@ -15,7 +15,6 @@ namespace TIKSN.Cmdlets
 
         protected override void BeginProcessing()
         {
-            WriteCommandDetail("xxxxx");
             WriteObject(speaker.GetInstalledVoices(), true);
         }
     }
