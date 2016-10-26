@@ -241,6 +241,7 @@
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -267,6 +268,7 @@
     <Compile Include="GetCultureInfoCommand.cs" />
     <Compile Include="GetCurrencyInfoCommand.cs" />
     <Compile Include="GetExchangeRateCommand.cs" />
+    <Compile Include="GetInstalledVoiceCommand.cs" />
     <Compile Include="GetPseudoCultureInfoCommand.cs" />
     <Compile Include="GetPseudoRegionInfoCommand.cs" />
     <Compile Include="GetRegionInfoCommand.cs" />

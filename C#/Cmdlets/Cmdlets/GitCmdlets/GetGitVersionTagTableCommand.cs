@@ -25,7 +25,7 @@ namespace TIKSN.Cmdlets.GitCmdlets
                 {
                     var tag = repository.Tags.ElementAt(i);
 
-                    WriteVerbose($"{tag.Annotation}");
+                    WriteVerbose($"{tag.CanonicalName}");
 
                     p.Report(new OperationProgressReport(i + 1, count));
                 }
