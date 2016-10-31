@@ -1,7 +1,9 @@
 ﻿using LibGit2Sharp;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using TIKSN.Cmdlets.GitCmdlets.Models;
 using TIKSN.Progress;
 
 namespace TIKSN.Cmdlets.GitCmdlets
@@ -15,6 +17,8 @@ namespace TIKSN.Cmdlets.GitCmdlets
 
             var repository = new Repository(SessionState.Path.CurrentFileSystemLocation.Path);
 
+            var tags = new List<GitTagModel>();
+
             using (var progress = new PowerShellProgress(this, "Searching ...", "Searching for tags"))
             {
                 IProgress<OperationProgressReport> p = progress;
@@ -25,11 +29,14 @@ namespace TIKSN.Cmdlets.GitCmdlets
                 {
                     var tag = repository.Tags.ElementAt(i);
 
-                    WriteVerbose($"{tag.CanonicalName}");
+                    tags.Add(new Models.GitTagModel(tag.FriendlyName));
+                    WriteVerbose($"{tag.FriendlyName} - {tag.Annotation}");
 
                     p.Report(new OperationProgressReport(i + 1, count));
                 }
             }
+
+            WriteObject(tags, true);
         }
     }
 }

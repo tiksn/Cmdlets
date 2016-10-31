@@ -279,6 +279,7 @@
     <Compile Include="GitCmdlets\GetGitVersionTagTableCommand.cs" />
     <Compile Include="GitCmdlets\GitDirectoryScanner.cs" />
     <Compile Include="GitCmdlets\IVisitCommand.cs" />
+    <Compile Include="GitCmdlets\Models\GitTagModel.cs" />
     <Compile Include="GitCmdlets\PullVisitCommand.cs" />
     <Compile Include="GitCmdlets\SetVisualStudioGitVersionTagCommand.cs" />
     <Compile Include="GitCmdlets\UpdateGitRepositoryCommand.cs" />
