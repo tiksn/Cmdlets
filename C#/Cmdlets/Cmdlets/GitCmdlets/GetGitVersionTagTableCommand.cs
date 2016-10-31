@@ -29,7 +29,7 @@ namespace TIKSN.Cmdlets.GitCmdlets
                 {
                     var tag = repository.Tags.ElementAt(i);
 
-                    tags.Add(new Models.GitTagModel(tag.FriendlyName));
+                    tags.Add(new GitTagModel(tag.FriendlyName, tag.Annotation?.Tagger?.ToString(), tag.Annotation?.Message));
                     WriteVerbose($"{tag.FriendlyName} - {tag.Annotation}");
 
                     p.Report(new OperationProgressReport(i + 1, count));
