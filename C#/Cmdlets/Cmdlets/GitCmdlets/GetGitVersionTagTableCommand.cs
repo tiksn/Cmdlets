@@ -36,7 +36,7 @@ namespace TIKSN.Cmdlets.GitCmdlets
                 }
             }
 
-            WriteObject(tags, true);
+            WriteObject(tags.OrderByDescending(item => item), true);
         }
     }
 }
