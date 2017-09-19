@@ -5,7 +5,7 @@ using System.Management.Automation;
 using TIKSN.Analytics.Logging;
 using TIKSN.DependencyInjection;
 
-namespace TIKSN.Cmdlets.Core.PowerShellCoreModule
+namespace TIKSN.Cmdlets.Core
 {
 	public class CompositionRootSetup : AutofacCompositionRootSetupBase
 	{

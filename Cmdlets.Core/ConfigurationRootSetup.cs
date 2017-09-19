@@ -2,7 +2,7 @@
 using System;
 using TIKSN.Configuration;
 
-namespace TIKSN.Cmdlets.Core.PowerShellCoreModule
+namespace TIKSN.Cmdlets.Core
 {
 	public class ConfigurationRootSetup : ConfigurationRootSetupBase
 	{

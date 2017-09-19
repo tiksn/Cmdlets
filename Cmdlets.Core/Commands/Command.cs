@@ -1,7 +1,7 @@
 ﻿using System;
 using TIKSN.PowerShell;
 
-namespace TIKSN.Cmdlets.Core.PowerShellCoreModule.Commands
+namespace TIKSN.Cmdlets.Core.Commands
 {
 	public abstract class Command : CommandBase
 	{

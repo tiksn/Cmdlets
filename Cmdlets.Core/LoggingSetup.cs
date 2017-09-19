@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using TIKSN.Analytics.Logging;
 using TIKSN.PowerShell;
 
-namespace TIKSN.Cmdlets.Core.PowerShellCoreModule
+namespace TIKSN.Cmdlets.Core
 {
 	public class LoggingSetup : LoggingSetupBase
 	{
