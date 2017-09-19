@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>TIKSN.Cmdlets.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TIKSN-Framework" Version="2.2.0-beta.11.pscore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TIKSN-PowerShell-Cmdlets.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

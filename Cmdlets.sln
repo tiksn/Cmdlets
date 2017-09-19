@@ -1,20 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Cmdlets", "Cmdlets\Cmdlets.vbproj", "{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmdlets.Core", "Cmdlets.Core\Cmdlets.Core.csproj", "{AC4FE742-C675-42EB-83DE-D22840C21E14}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs12
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Cmdlets\\Cmdlets.vbproj
-		SccProjectName1 = Cmdlets
-		SccLocalPath1 = Cmdlets
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -24,8 +17,15 @@ Global
 		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8203611-546E-4CE5-989A-92D070D4C302}
 	EndGlobalSection
 EndGlobal
