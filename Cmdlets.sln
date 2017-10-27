@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Cmdlets", "Cmdlets\Cmdlets.vbproj", "{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmdlets.Core", "Cmdlets.Core\Cmdlets.Core.csproj", "{AC4FE742-C675-42EB-83DE-D22840C21E14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cmdlets.Core", "Cmdlets.Core\Cmdlets.Core.csproj", "{AC4FE742-C675-42EB-83DE-D22840C21E14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsCmdlets", "WindowsCmdlets\WindowsCmdlets.csproj", "{31BE3D65-39B0-4CBF-A274-8B23E5945FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6376C8AC-56A4-495B-B997-A6CE1E9AFB44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4FE742-C675-42EB-83DE-D22840C21E14}.Release|Any CPU.ActiveCfg = Release|Any CPU

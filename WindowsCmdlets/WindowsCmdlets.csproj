@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="TIKSN-Framework">
-      <Version>3.0.0-alpha.5.pscore</Version>
+      <Version>3.0.0-alpha.9</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
