@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>TIKSN.Cmdlets.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TIKSN-Framework" Version="3.0.0-alpha.9" />
+    <PackageReference Include="TIKSN-Framework" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>

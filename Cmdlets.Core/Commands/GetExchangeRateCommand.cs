@@ -1,11 +1,14 @@
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 using TIKSN.Cmdlets.Common.Helpers;
 using TIKSN.Cmdlets.Common.Models;
 using TIKSN.Finance;
+using TIKSN.Time;
 
 namespace TIKSN.Cmdlets.Core.Commands
 {
@@ -22,10 +25,11 @@ namespace TIKSN.Cmdlets.Core.Commands
         [Parameter(Mandatory = false)]
         public DateTimeOffset? AsOn { get; set; }
 
-        protected override async Task ProcessRecordAsync()
+        protected override async Task ProcessRecordAsync(CancellationToken cancellationToken)
         {
             var banks = ExchangeHelper.GetSupportedBanks();
-            var exchangeDate = AsOn.HasValue ? AsOn.Value : DateTimeOffset.Now;
+            var timeProvider = ServiceProvider.GetRequiredService<ITimeProvider>();
+            var exchangeDate = AsOn.HasValue ? AsOn.Value : timeProvider.GetCurrentTime();
 
             List<BankExchangeRate> result = new List<BankExchangeRate>();
 
@@ -42,12 +46,12 @@ namespace TIKSN.Cmdlets.Core.Commands
 
                 try
                 {
-                    var pairs = await bank.Exchange.GetCurrencyPairsAsync(exchangeDate);
+                    var pairs = await bank.Exchange.GetCurrencyPairsAsync(exchangeDate, cancellationToken);
 
                     if (pairs.Any(item => item.Equals(pair)))
                     {
                         WriteVerbose(string.Format("Retrieving {1} exchange rate from {0}", bank.BankName, pair));
-                        var rate = await bank.Exchange.GetExchangeRateAsync(pair, exchangeDate);
+                        var rate = await bank.Exchange.GetExchangeRateAsync(pair, exchangeDate, cancellationToken);
                         result.Add(new BankExchangeRate(bank.BankName, pair, rate));
                     }
                 }
