@@ -1,33 +1,35 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Management.Automation;
+using System;
 using TIKSN.Analytics.Logging;
 using TIKSN.DependencyInjection;
 
 namespace TIKSN.Cmdlets.Core
 {
-	public class CompositionRootSetup : AutofacCompositionRootSetupBase
-	{
-		private readonly Cmdlet _cmdlet;
+    public class CompositionRootSetup : AutofacCompositionRootSetupBase
+    {
+        private static Lazy<IServiceProvider> lazyServiceProvider = new Lazy<IServiceProvider>(
+            () => new CompositionRootSetup(ConfigurationRootSetup.ConfigurationRoot).CreateServiceProvider(),
+            false);
 
-		public CompositionRootSetup(Cmdlet cmdlet, IConfigurationRoot configurationRoot) : base(configurationRoot)
-		{
-			_cmdlet = cmdlet;
-		}
+        public CompositionRootSetup(IConfigurationRoot configurationRoot) : base(configurationRoot)
+        {
+        }
 
-		protected override void ConfigureContainerBuilder(ContainerBuilder builder)
-		{
-			builder.RegisterType<LoggingSetup>().As<LoggingSetupBase>();
-		}
+        public static IServiceProvider ServiceProvider => lazyServiceProvider.Value;
 
-		protected override void ConfigureOptions(IServiceCollection services, IConfigurationRoot configuration)
-		{
-		}
+        protected override void ConfigureContainerBuilder(ContainerBuilder builder)
+        {
+            builder.RegisterType<LoggingSetup>().As<LoggingSetupBase>();
+        }
 
-		protected override void ConfigureServices(IServiceCollection services)
-		{
-			services.AddSingleton(_cmdlet);
-		}
-	}
+        protected override void ConfigureOptions(IServiceCollection services, IConfigurationRoot configuration)
+        {
+        }
+
+        protected override void ConfigureServices(IServiceCollection services)
+        {
+        }
+    }
 }
