@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsCmdlets", "WindowsCm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardCmdlets", "StandardCmdlets\StandardCmdlets.csproj", "{76E4AF5F-A5BA-4F27-B764-CB3EABD5B6BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{737A06BD-4133-4F7D-AC48-6FFB2875CEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76E4AF5F-A5BA-4F27-B764-CB3EABD5B6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E4AF5F-A5BA-4F27-B764-CB3EABD5B6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E4AF5F-A5BA-4F27-B764-CB3EABD5B6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E4AF5F-A5BA-4F27-B764-CB3EABD5B6BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
