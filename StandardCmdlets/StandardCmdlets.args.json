@@ -1,0 +1,14 @@
+{
+  "FileVersion": 2,
+  "Id": "76e4af5f-a5ba-4f27-b764-cb3eabd5b6bd",
+  "Items": [
+    {
+      "Id": "31028ec8-56e7-4168-a818-be355be72da0",
+      "Command": "-NoExit -Command dotnet publish -c Debug --self-contained;"
+    },
+    {
+      "Id": "d0eca343-82a4-4dc6-9ab5-e6596e394407",
+      "Command": "Import-Module .\\TIKSN-PowerShell-Cmdlets.psd1"
+    }
+  ]
+}
