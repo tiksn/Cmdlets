@@ -8,7 +8,7 @@
 #addin nuget:?package=Cake.Git
 #addin nuget:?package=TIKSN-Cake&loaddependencies=true
 
-var target = Argument("target", "build");
+var target = Argument("target", "PostBuild");
 var solution = "Cmdlets.sln";
 
 using System;
@@ -26,9 +26,15 @@ Teardown(context =>
     // Executed AFTER the last task.
 });
 
+Task("PostBuild")
+  .IsDependentOn("Build")
+  .Does(() =>
+{
+  CopyFile("TIKSN-PowerShell-Cmdlets.psd1", buildArtifactsDir.CombineWithFilePath("TIKSN-PowerShell-Cmdlets.psd1"));
+});
+
 Task("Build")
-  .IsDependentOn("Clean")
-  .IsDependentOn("Restore")
+  .IsDependentOn("PreBuild")
   .Does(() =>
 {
   buildArtifactsDir = CreateTrashSubDirectory("artifacts");
@@ -42,6 +48,14 @@ Task("Build")
         .WithProperty("OutDir", buildArtifactsDir.FullPath)
         //.WithTarget("Rebuild")
         );
+});
+
+Task("PreBuild")
+  .IsDependentOn("Clean")
+  .IsDependentOn("Restore")
+  .Does(() =>
+{
+
 });
 
 Task("Restore")
