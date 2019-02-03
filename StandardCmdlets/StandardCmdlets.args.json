@@ -4,11 +4,11 @@
   "Items": [
     {
       "Id": "31028ec8-56e7-4168-a818-be355be72da0",
-      "Command": "-NoExit -Command dotnet publish -c Debug --self-contained;"
+      "Command": "-NoExit"
     },
     {
-      "Id": "d0eca343-82a4-4dc6-9ab5-e6596e394407",
-      "Command": "Import-Module .\\TIKSN-PowerShell-Cmdlets.psd1"
+      "Id": "171c15bd-d76e-42ed-91a3-7810ebb557a6",
+      "Command": "-File ..\\..\\..\\..\\DebugModule.ps1"
     }
   ]
 }

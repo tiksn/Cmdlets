@@ -13,7 +13,7 @@
 RootModule = 'Cmdlets.Core.dll'
 
 # Version number of this module.
-ModuleVersion = '2.0.0.0-alpha.1'
+ModuleVersion = '2.0.0.0'
 
 # ID used to uniquely identify this module
 GUID = '852b7459-fcef-4c8d-96dd-049c344b88ad'
@@ -57,14 +57,11 @@ RequiredAssemblies = @(
     'Autofac.Extensions.DependencyInjection.dll',
     'ConsoleTables.dll',
     'Exceptionless.Signed.dll',
-    'LiteGuard.dll',
     'Microsoft.ApplicationInsights.dll',
     'Microsoft.AspNetCore.Hosting.Abstractions.dll',
     'Microsoft.AspNetCore.Hosting.Server.Abstractions.dll',
     'Microsoft.AspNetCore.Http.Abstractions.dll',
     'Microsoft.AspNetCore.Http.Features.dll',
-    'Microsoft.Data.Edm.dll',
-    'Microsoft.Data.OData.dll',
     'Microsoft.EntityFrameworkCore.dll',
     'Microsoft.Extensions.Caching.Abstractions.dll',
     'Microsoft.Extensions.Caching.Memory.dll',
@@ -122,7 +119,6 @@ RequiredAssemblies = @(
     'System.Security.Cryptography.Encoding.dll',
     'System.Security.Cryptography.Primitives.dll',
     'System.Security.Cryptography.X509Certificates.dll',
-    'System.Spatial.dll',
     'System.Text.Encodings.Web.dll',
     'System.Text.RegularExpressions.dll',
     'System.Xml.ReaderWriter.dll',
