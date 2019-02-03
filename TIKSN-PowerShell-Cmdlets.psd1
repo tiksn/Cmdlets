@@ -9,8 +9,8 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# ModuleToProcess = 'Cmdlets.Core.dll'
-RootModule = 'Cmdlets.Core.dll'
+# ModuleToProcess = 'TIKSN.Cmdlets.Core.dll'
+RootModule = 'TIKSN.Cmdlets.Core.dll'
 
 # Version number of this module.
 ModuleVersion = '2.0.0.0'
@@ -84,7 +84,6 @@ RequiredAssemblies = @(
     'Nito.AsyncEx.Context.dll',
     'Nito.AsyncEx.Tasks.dll',
     'Nito.Disposables.dll',
-    'Cmdlets.Core.dll',
     'Remotion.Linq.dll',
     'Serilog.dll',
     'Serilog.Extensions.Logging.dll',
@@ -124,7 +123,14 @@ RequiredAssemblies = @(
     'System.Xml.ReaderWriter.dll',
     'TIKSN.Core.dll',
     'TIKSN.LanguageLocalization.dll',
-    'TIKSN.RegionLocalization.dll')
+    'TIKSN.RegionLocalization.dll',
+    'TIKSN.Cmdlets.Common.dll',
+    'TIKSN.Cmdlets.Core.dll',
+    'TIKSN.Core.dll',
+    # 'TIKSN.Framework.Full.dll',
+    'TIKSN.StandardCmdlets.dll'
+    
+)
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

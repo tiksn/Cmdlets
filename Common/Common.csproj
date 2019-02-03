@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>TIKSN.Cmdlets.Common</RootNamespace>
+    <AssemblyName>TIKSN.Cmdlets.Common</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
