@@ -13,7 +13,7 @@
 RootModule = 'Cmdlets.Core.dll'
 
 # Version number of this module.
-ModuleVersion = '1.3.0.0'
+ModuleVersion = '2.0.0.0-alpha.1'
 
 # ID used to uniquely identify this module
 GUID = '852b7459-fcef-4c8d-96dd-049c344b88ad'
