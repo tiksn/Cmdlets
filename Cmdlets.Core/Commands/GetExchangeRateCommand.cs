@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using TIKSN.Cmdlets.Commands;
 using TIKSN.Cmdlets.Common.Helpers;
 using TIKSN.Cmdlets.Common.Models;
 using TIKSN.Finance;
@@ -12,18 +13,17 @@ using TIKSN.Time;
 
 namespace TIKSN.Cmdlets.Core.Commands
 {
-
     [Cmdlet("Get", "ExchangeRate")]
     public class GetExchangeRateCommand : Command
     {
+        [Parameter(Mandatory = false)]
+        public DateTimeOffset? AsOn { get; set; }
+
         [Parameter(Mandatory = true)]
         public string BaseCurrency { get; set; }
 
         [Parameter(Mandatory = true)]
         public string CounterCurrency { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public DateTimeOffset? AsOn { get; set; }
 
         protected override async Task ProcessRecordAsync(CancellationToken cancellationToken)
         {
@@ -35,7 +35,6 @@ namespace TIKSN.Cmdlets.Core.Commands
 
             CurrencyPair pair = new CurrencyPair(new CurrencyInfo(BaseCurrency), new CurrencyInfo(CounterCurrency));
             ProgressRecord BankProgressRecord = new ProgressRecord(0, "Retrieving exchange rates from bank", "Bank name");
-
 
             foreach (var bank in banks)
             {
