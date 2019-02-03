@@ -5,13 +5,12 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
-using TIKSN.Cmdlets.Commands;
 using TIKSN.Cmdlets.Common.Helpers;
 using TIKSN.Cmdlets.Common.Models;
 using TIKSN.Finance;
 using TIKSN.Time;
 
-namespace TIKSN.Cmdlets.Core.Commands
+namespace TIKSN.Cmdlets.Commands
 {
     [Cmdlet("Get", "ExchangeRate")]
     public class GetExchangeRateCommand : Command
