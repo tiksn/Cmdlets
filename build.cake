@@ -44,18 +44,6 @@ Task("Build")
         );
 });
 
-Task("EstimateNextVersion")
-  .Description("Estimate next version.")
-  .Does(() =>
-{
-  var packageList = NuGetList(nugetPackageId, new NuGetListSettings {
-      AllVersions = false,
-      Prerelease = true
-      });
-  SetPublishedVersions(packageList.Select(v => new NuGetVersion(v.Version)));
-  Information("Next version estimated to be " + GetNextEstimatedVersion());
-});
-
 Task("Restore")
   .Description("Restores packages.")
   .Does(() =>

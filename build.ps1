@@ -226,6 +226,8 @@ if (!(Test-Path $CAKE_EXE)) {
 }
 
 
+$data = (iex (cat -raw TIKSN-PowerShell-Cmdlets.psd1))
+$dataVersion = $data.ModuleVersion
 
 # Build Cake arguments
 $cakeArguments = @("$Script");
@@ -234,6 +236,9 @@ if ($Configuration) { $cakeArguments += "-configuration=$Configuration" }
 if ($Verbosity) { $cakeArguments += "-verbosity=$Verbosity" }
 if ($ShowDescription) { $cakeArguments += "-showdescription" }
 if ($DryRun) { $cakeArguments += "-dryrun" }
+
+$cakeArguments += "-next_version=$dataVersion"
+
 $cakeArguments += $ScriptArgs
 
 # Start Cake
